@@ -1,0 +1,7 @@
+<div *ngIf="mostrarErro">
+    <span class="form-control invalid-feedback" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+    <div *ngIf="mostrarErro" class="alert alert-danger" role="alert">
+        {{ msgErro }}
+    </div>
+</div>

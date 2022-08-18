@@ -1,0 +1,70 @@
+<br>
+<div class="row">
+    <div class="col-10">
+        <h5>Cadastro</h5>
+    </div>
+</div>
+
+<form [formGroup]="formulario">
+    <br>
+    <div class="form-group" [ngClass]="aplicaCssErro('nome')">
+        <div class="row1">
+            <div class="col">
+                <label for="nome">Nome*</label>
+                <input type="text" class="form-control has-error" id="nome" placeholder="Nome" formControlName="name">
+            </div>
+
+            <app-campo-control-erro [mostrarErro]="verificaValidTouched('name')" msgErro="Nome é obrigatório">
+            </app-campo-control-erro>
+            <br>
+
+            <div class="col" [ngClass]="aplicaCssErro('email')">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control has-error" id="email" placeholder="Email"
+                    formControlName="email">
+            </div>
+
+            <app-campo-control-erro [mostrarErro]="verificaValidTouched('email')" msgErro="Email é obrigatório">
+            </app-campo-control-erro>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label for="genero">Gênero*</label>
+                <select class="form-select" formControlName="gender">
+                    <option *ngFor="let genero of generos" [value]="genero.toLowerCase()">{{ genero }}</option>
+                </select>
+
+                <app-campo-control-erro [mostrarErro]="verificaValidTouched('gender')" msgErro="Selecione o gênero">
+                </app-campo-control-erro>
+            </div>
+
+
+
+            <div class="col">
+                <label for="genero">Status*</label>
+                <select class="form-select" formControlName="status">
+                    <option *ngFor="let stat of status" [value]="stat.toLowerCase()">{{ stat }}</option>
+                </select>
+
+                <app-campo-control-erro [mostrarErro]="verificaValidTouched('status')" msgErro="Selecione o status">
+                </app-campo-control-erro>
+            </div>
+        </div>
+        <br>
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col my-1">
+                    <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid"
+                        (click)="onSubmit()">Cadastrar</button>
+                </div>
+                <div class="col my-1">
+                    <button type="submit" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
