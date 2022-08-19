@@ -8,9 +8,8 @@ describe('CampoControlErroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CampoControlErroComponent ]
-    })
-    .compileComponents();
+      declarations: [CampoControlErroComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CampoControlErroComponent);
     component = fixture.componentInstance;

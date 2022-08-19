@@ -9,40 +9,45 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import { ListaResolverGuard } from './guards/lista-resolver.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent,
-    canLoad: [AuthGuard]
+  { path: 'home', component: HomeComponent, canLoad: [AuthGuard] },
+
+  {
+    path: 'cadastro',
+    component: CadastroComponent,
+    canLoad: [AuthGuard],
+    resolve: {
+      Usuario: ListaResolverGuard,
+    },
   },
 
-  { path: 'cadastro', component: CadastroComponent,
-    canLoad: [AuthGuard],
-    resolve:{
-      Usuario: ListaResolverGuard
-    }
-},
-
-  { path: 'lista', component: ListaComponent,
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard]
-},
-
-{ path: 'cadastro/editar/:id', component: CadastroComponent,
+  {
+    path: 'lista',
+    component: ListaComponent,
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
-    resolve:{
-      Usuario: ListaResolverGuard
-    }
-},
+  },
+
+  {
+    path: 'cadastro/editar/:id',
+    component: CadastroComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+    resolve: {
+      Usuario: ListaResolverGuard,
+    },
+  },
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 
-  { path: '**', component: PaginaNaoEncontradaComponent,
-    canActivate: [AuthGuard]
-}
-
+  {
+    path: '**',
+    component: PaginaNaoEncontradaComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,22 +1,18 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-h5, i {
-    color: #0d6efd;
+h5,
+i {
+  color: #0d6efd;
 }
 
-.enviar{
-    padding-left: 5px;
+.enviar {
+  padding-left: 5px;
 }
 
 button {
-    width: 300px;
+  width: 300px;
 }
-
 
 .ng-invalid.ng-touched:not(form) {
-    border: 1px solid #e40c0c;
-
+  border: 1px solid #e40c0c;
 }
-
-
-

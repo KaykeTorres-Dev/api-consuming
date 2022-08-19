@@ -19,7 +19,7 @@
 
     <div class="form-group" [ngClass]="aplicaCssErro('senha')">
         <label for="senha">Senha</label>
-        <input [(ngModel)]="usuario.senha"  type="password" class="form-control has-error" id="senha" placeholder="Senha"
+        <input [(ngModel)]="usuario.senha" type="password" class="form-control has-error" id="senha" placeholder="Senha"
             formControlName="senha">
 
         <app-campo-control-erro [mostrarErro]="verificaValidTouched('senha')" msgErro="Senha é obrigatório">
@@ -35,7 +35,7 @@
                     (click)="fazerLogin()">Entrar</button>
             </div>
             <div class="col my-1">
-                    <button type="submit" class="btn btn-secondary" (click)="fazerCadastro()">Cadastre-se</button>
+                <button type="submit" class="btn btn-secondary" (click)="fazerCadastro()">Cadastre-se</button>
             </div>
         </div>
     </div>

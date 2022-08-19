@@ -7,7 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ListaComponent } from './lista/lista.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
@@ -17,7 +21,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,25 +29,26 @@ import { AlertModalComponent } from './shared/alert-modal/alert-modal.component'
     ListaComponent,
     CampoControlErroComponent,
     PaginaNaoEncontradaComponent,
-    AlertModalComponent
+    AlertModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [ {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     AuthService,
-    AuthGuard, 
+    AuthGuard,
     ListaService,
     BsModalService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

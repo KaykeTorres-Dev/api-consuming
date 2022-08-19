@@ -8,9 +8,8 @@ describe('PaginaNaoEncontradaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginaNaoEncontradaComponent ]
-    })
-    .compileComponents();
+      declarations: [PaginaNaoEncontradaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PaginaNaoEncontradaComponent);
     component = fixture.componentInstance;

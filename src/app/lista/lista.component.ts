@@ -9,14 +9,12 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.scss']
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaComponent implements OnInit {
-  
   deletarModalRef!: BsModalRef;
   @ViewChild('deletarModal', { static: true }) deletarModal: any;
 
@@ -27,69 +25,63 @@ export class ListaComponent implements OnInit {
   readonly Pesquisar = 'https://gorest.co.in/public/v2/users';
 
   resultados!: Observable<any>;
-  
+
   total!: number;
 
   usuarios$!: Observable<Usuario[]>;
 
   erro$ = new Subject<Boolean>();
 
-
   constructor(
     private service: ListaService,
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
-
     this.onRefresh();
-
   }
 
-  onUsuario(){
+  onUsuario() {
     this.router.navigate(['cadastro']);
   }
 
-  onRefresh(){
-    this.usuarios$ = this.service.listar()
-    .pipe(
-      catchError(error => {
+  onRefresh() {
+    this.usuarios$ = this.service.listar().pipe(
+      catchError((error) => {
         console.error(error);
         this.erro$.next(true);
-        return of ();
-
+        return of();
       })
     );
+  }
 
-    }
-
-  onEditar(id: Usuario){
+  onEditar(id: Usuario) {
     this.router.navigate(['cadastro/editar', id]);
   }
 
-  onDeletar(usuario: Usuario){
+  onDeletar(usuario: Usuario) {
     this.usuarioSelecionado = usuario;
-    this.deletarModalRef = this.modalService.show(this.deletarModal, {class: 'modal-sm'});
+    this.deletarModalRef = this.modalService.show(this.deletarModal, {
+      class: 'modal-sm',
+    });
   }
 
-  onConfirmarDeletar(){
+  onConfirmarDeletar() {
     this.service.remover(this.usuarioSelecionado.id).subscribe(
-      success => {
+      (success) => {
         this.onRefresh();
         this.deletarModalRef.hide();
       },
-      (error: any) => alert('Erro ao excluir usuário'),
-      
-    )
-
+      (error: any) => alert('Erro ao excluir usuário')
+    );
   }
 
-  onRecusarDeletar(){
+  onRecusarDeletar() {
     this.deletarModalRef.hide();
   }
-
 
   // onSearch(){
   //   console.log(this.filtro.value);
@@ -100,5 +92,4 @@ export class ListaComponent implements OnInit {
   //     map((res: any) => res.resultados)
   //   );
   // }
-
 }

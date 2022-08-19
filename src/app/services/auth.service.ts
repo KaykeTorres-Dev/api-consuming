@@ -4,29 +4,23 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private usuarioAutenticado: boolean = false;
 
   mostrarMenuEmiiter = new EventEmitter<boolean>();
 
-  constructor(
-    private router: Router) { }
+  constructor(private router: Router) {}
 
-  fazerLogin(login: Login){
+  fazerLogin(login: Login) {
     if (login.email === 'usuario@email.com' && login.senha === '123456') {
-
       this.usuarioAutenticado = true;
 
       this.mostrarMenuEmiiter.emit(true);
 
       this.router.navigate(['lista']);
-
-
-    }else{
-      
+    } else {
       this.usuarioAutenticado = false;
 
       alert('Email ou senha incorretos!!!');
@@ -35,12 +29,7 @@ export class AuthService {
     }
   }
 
-
-  usuarioEstaAutenticado(){
+  usuarioEstaAutenticado() {
     return this.usuarioAutenticado;
   }
-
 }
-
-
-
