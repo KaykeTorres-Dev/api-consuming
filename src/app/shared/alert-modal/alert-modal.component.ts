@@ -7,14 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./alert-modal.component.scss'],
 })
 export class AlertModalComponent implements OnInit {
-  @Input() tipo = 'Sucesso';
-  @Input() mensagem!: string;
+  @Input() type = 'Sucesso';
+  @Input() message!: string;
 
   constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit(): void {}
 
-  onFechar() {
+  onClose() {
     this.bsModalRef.hide();
   }
 }

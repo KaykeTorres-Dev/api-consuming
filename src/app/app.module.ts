@@ -3,32 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { ListaComponent } from './lista/lista.component';
+import { LoginComponent } from './login/login.component';
+
+import { ListComponent } from './list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  HttpClient,
-  HttpClientModule,
-  HTTP_INTERCEPTORS,
-} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { CampoControlErroComponent } from './shared/campo-control-erro/campo-control-erro.component';
-import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { FieldControlErrorComponent } from './shared/field-control-error/field-control-error.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './guards/auth.guard';
-import { ListaService } from './services/lista.service';
+import { ListService } from './services/list.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
+import { SignUpComponent } from './signUp/signUp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CadastroComponent,
-    ListaComponent,
-    CampoControlErroComponent,
-    PaginaNaoEncontradaComponent,
+    LoginComponent,
+    SignUpComponent,
+    ListComponent,
+    FieldControlErrorComponent,
+    PageNotFoundComponent,
     AlertModalComponent,
   ],
   imports: [
@@ -46,7 +43,7 @@ import { AlertModalComponent } from './shared/alert-modal/alert-modal.component'
     },
     AuthService,
     AuthGuard,
-    ListaService,
+    ListService,
     BsModalService,
   ],
   bootstrap: [AppComponent],

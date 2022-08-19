@@ -1,47 +1,46 @@
-import { Usuario } from './lista/usuario';
-import { ListaComponent } from './lista/lista.component';
+import { ListComponent } from './list/list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { HomeComponent } from './home/home.component';
+import { SignUpComponent } from './signUp/signUp.component';
+import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
-import { ListaResolverGuard } from './guards/lista-resolver.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ListResolverGuard } from './guards/list-resolver.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canLoad: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canLoad: [AuthGuard] },
 
   {
-    path: 'cadastro',
-    component: CadastroComponent,
+    path: 'signUp',
+    component: SignUpComponent,
     canLoad: [AuthGuard],
     resolve: {
-      Usuario: ListaResolverGuard,
+      User: ListResolverGuard,
     },
   },
 
   {
-    path: 'lista',
-    component: ListaComponent,
+    path: 'list',
+    component: ListComponent,
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
   },
 
   {
-    path: 'cadastro/editar/:id',
-    component: CadastroComponent,
+    path: 'signUp/edit/:id',
+    component: SignUpComponent,
     canActivate: [AuthGuard],
     canLoad: [AuthGuard],
     resolve: {
-      Usuario: ListaResolverGuard,
+      User: ListResolverGuard,
     },
   },
 
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
 
   {
     path: '**',
-    component: PaginaNaoEncontradaComponent,
+    component: PageNotFoundComponent,
     canActivate: [AuthGuard],
   },
 ];

@@ -2,23 +2,22 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
-  RouterEvent,
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Usuario } from '../lista/usuario';
-import { ListaService } from '../services/lista.service';
+import { User } from '../list/user';
+import { ListService } from '../services/list.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ListaResolverGuard implements Resolve<Usuario> {
-  constructor(private service: ListaService) {}
+export class ListResolverGuard implements Resolve<User> {
+  constructor(private service: ListService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Usuario | Observable<any> | Promise<Usuario> {
+  ): User | Observable<any> | Promise<User> {
     if (route.params && route.params['id']) {
       return this.service.loadByID(route.params['id']);
     }

@@ -9,13 +9,13 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'challenge';
 
-  mostrarMenu: boolean = false;
+  showMenu: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.mostrarMenuEmiiter.subscribe(
-      (mostrar) => (this.mostrarMenu = mostrar)
+    this.authService.showMenuEmitter.subscribe(
+      (show) => (this.showMenu = show)
     );
   }
 }

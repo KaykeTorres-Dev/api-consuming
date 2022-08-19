@@ -4,8 +4,8 @@
         <h5>Usuários</h5>
     </div>
     <div class="col d-flex justify-content-end">
-        <form class="d-flex" role="filtro">
-            <input class="form-control me-2" type="filtro" placeholder="Filtrar" [formControl]="filtro">
+        <form class="d-flex" role="filter">
+            <input class="form-control me-2" type="filter" placeholder="Filtrar" [formControl]="filter">
             <button class="btn btn-outline-primary" type="submit">
                 <i class="bi bi-search"></i>
             </button>
@@ -13,7 +13,7 @@
     </div>
 </div>
 <br>
-<table class="table" *ngIf="usuarios$ | async as usuarios; else carregandoErro">
+<table class="table" *ngIf="users$ | async as users; else loadingError">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -25,19 +25,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let usuario of usuarios">
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.name }}</td>
-            <td>{{ usuario.email }}</td>
-            <td>{{ usuario.gender }}</td>
-            <td>{{ usuario.status }}</td>
+        <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.status }}</td>
             <td>
                 <span class="float-right">
-                    <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEditar(usuario.id)">
+                    <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(user.id)">
                         Atualizar
                     </button>
 
-                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDeletar(usuario)">
+                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(user)">
                         Excluir
                     </button>
                 </span>
@@ -54,7 +54,7 @@
 </table>
 <div class=" d-flex justify-content-center">
     <span>
-        <button class="btn btn-primary mb-1 btn-sm" (click)="onUsuario()">
+        <button class="btn btn-primary mb-1 btn-sm" (click)="onNewUser()">
             Novo Usuário
         </button>
 
@@ -64,19 +64,19 @@
     </span>
 </div>
 
-<ng-template #carregandoErro>
-    <div *ngIf="erro$ | async; else carregandoSemErro">
+<ng-template #loadingError>
+    <div *ngIf="error$ | async; else loadingWithoutError">
         Erro ao carregar usuários. Tente novamente mais tarde.
     </div>
-    <ng-template #carregandoSemErro>
+    <ng-template #loadingWithoutError>
         <span>Carregando Usuários...</span>
     </ng-template>
 </ng-template>
 
-<ng-template #deletarModal>
+<ng-template #deleteModal>
     <div class="modal-body text-center">
         <p>Tem certeza que deseja excluir esse usuário?</p>
-        <button type="button" class="btn btn-primary" (click)=" onConfirmarDeletar()">Sim</button>
-        <button type="button" class="btn btn-btn-secondary" (click)="onRecusarDeletar()">Nao</button>
+        <button type="button" class="btn btn-primary" (click)=" onConfirmDelete()">Sim</button>
+        <button type="button" class="btn btn-btn-secondary" (click)="onRefuseDelete()">Nao</button>
     </div>
 </ng-template>

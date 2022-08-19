@@ -1,5 +1,4 @@
-import { FormGroup } from '@angular/forms';
-import { Login } from '../home/login';
+import { Login } from '../login/login';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,29 +6,29 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private usuarioAutenticado: boolean = false;
+  private userAuthenticated: boolean = false;
 
-  mostrarMenuEmiiter = new EventEmitter<boolean>();
+  showMenuEmitter = new EventEmitter<boolean>();
 
   constructor(private router: Router) {}
 
-  fazerLogin(login: Login) {
-    if (login.email === 'usuario@email.com' && login.senha === '123456') {
-      this.usuarioAutenticado = true;
+  logIn(login: Login) {
+    if (login.email === 'usuario@email.com' && login.password === '123456') {
+      this.userAuthenticated = true;
 
-      this.mostrarMenuEmiiter.emit(true);
+      this.showMenuEmitter.emit(true);
 
-      this.router.navigate(['lista']);
+      this.router.navigate(['list']);
     } else {
-      this.usuarioAutenticado = false;
+      this.userAuthenticated = false;
 
       alert('Email ou senha incorretos!!!');
 
-      this.mostrarMenuEmiiter.emit(false);
+      this.showMenuEmitter.emit(false);
     }
   }
 
-  usuarioEstaAutenticado() {
-    return this.usuarioAutenticado;
+  userIsAuthenticated() {
+    return this.userAuthenticated;
   }
 }
