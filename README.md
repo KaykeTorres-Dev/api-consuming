@@ -1,27 +1,33 @@
 # Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+Este projeto foi realizado utilizando Html, CSS, Bootstrap 5, Javascript, Typescript e [Angular CLI](https://github.com/angular/angular-cli) versão 14.0.6.
 
-## Development server
+## Requisitos:
+* <a href="https://code.visualstudio.com/">Visual Studio Code</a>;
+* <a>Angular 14.0.6</a>;
+* <a href="https://nodejs.org/pt">NodeJs</a>;
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Clone o repositório:
+ ```
+git clone https://github.com/KaykeTorres-Dev/api-consuming.git
+```
 
-## Code scaffolding
+## Para instalar o Angular, execute:
+```
+npm install -g @angular/cli@14.0.6
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Verifique se foi instalado corretamente:
+```
+ng version
+```
 
-## Build
+## Caso tenha problemas para rodar devido a versão do Angular, utilize:
+```
+npm i
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Rode o servidor local:
+```
+ng serve
+```
